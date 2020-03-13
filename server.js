@@ -6,6 +6,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+
+const items = [];
+
 app.get('/', (req, res)=>{
     let today = new Date();
     //to get the date and the day of the week
@@ -19,12 +22,18 @@ app.get('/', (req, res)=>{
     console.log(day);
 
     res.render('index', {
-        listTitle: day
+        listTitle: day,
+        newListItems: items
     })
 });
 
 app.post('/', (req, res)=>{
-    let item = 
+    let item = req.body.newItem;
+    items.push(item);
+    console.log(items);
+    res.redirect('/');
+    
+    
 })
 
 app.listen(3000, ()=>{
