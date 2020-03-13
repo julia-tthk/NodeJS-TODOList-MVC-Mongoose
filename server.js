@@ -32,9 +32,14 @@ app.post('/', (req, res)=>{
     items.push(item);
     console.log(items);
     res.redirect('/');
-    
-    
-})
+});
+
+app.get('/study', (req, res) => {
+    res.render('index', {
+        listTitle: "Study TODO",
+        newListItems: ""
+    })
+});
 
 app.listen(3000, ()=>{
     console.log("Server is running on port 3000");    
