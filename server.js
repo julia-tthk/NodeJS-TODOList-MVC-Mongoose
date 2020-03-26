@@ -18,8 +18,6 @@ const itemSchema = {
 const Item = mongoose.model('Item', itemSchema);
 
 
-
-
 //const items = [];
 //const itemsStudy = [];
 
@@ -47,25 +45,18 @@ app.get('/', (req, res)=>{
     
 });
 
+
 app.post('/', (req, res)=>{
     console.log(req.body.list);
     let userInput = req.body.newItem;
 
-    //create a new document to store in the DB using the data we got from user
     const item = new Item({
         name: userInput
     });
 
     item.save();
     res.redirect('/');
-    /*if(req.body.list === "Study TODO"){
-
-        itemsStudy.push(item);
-        res.redirect('/study');
-    } else {
-        items.push(item);
-        res.redirect('/');
-    }*/  
+   
 });
 
 app.post('/delete', (req, res) => {
@@ -79,12 +70,7 @@ app.post('/delete', (req, res) => {
     });
 });
 
-app.get('/study', (req, res) => {
-    res.render('index', {
-        listTitle: "Study TODO",
-        newListItems: itemsStudy
-    })
-});
+
 
 app.listen(3000, ()=>{
     console.log("Server is running on port 3000");    
