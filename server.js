@@ -18,9 +18,6 @@ const itemSchema = {
 const Item = mongoose.model('Item', itemSchema);
 
 
-//const items = [];
-//const itemsStudy = [];
-
 app.get('/', (req, res)=>{
     let today = new Date();
     //to get the date and the day of the week
